@@ -2,9 +2,11 @@
 	<!-- <div> -->
 		<div id="body">
 			<transition :name="slide">
-				<router-view></router-view>
+				<keep-alive>
+					<router-view></router-view>
+				</keep-alive>
 			</transition>
-		<Footer></Footer>
+			<Footer></Footer>
 		</div>
 	<!-- </div> -->
 </template>
@@ -19,7 +21,7 @@
 			}
 		},
 		components: {
-			Footer
+			Footer,
 		},
 		watch: {
 			'$route'(to, from) {
@@ -41,5 +43,13 @@
 		bottom: 0;
 		right: 0;
 		padding-bottom: 1rem;
+		overflow: hidden;
+		> div:not(#footer) {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 1rem;
+		}
 	}
 </style>

@@ -10,6 +10,9 @@ a {
 	color: #333;
 	text-decoration: none;
 }
+h3 {
+	font-weight: normal;
+}
 
 button {
 	border: 0;
@@ -18,17 +21,17 @@ button {
 }
 .slide-left-enter-active,
 .slide-right-enter-active {
-	transition: all .8s ease;
+	transition: all .2s ease-out;
 }
 .slide-left-leave-active,
 .slide-right-leave-active {
-	transition: all .8s ease;
+	transition: all .2s ease-out;
 }
-.slide-left-enter, 
-.slide-left-leave-to {
-	transform: translateX(100%);
-}
-.slide-right-enter, 
+.slide-left-enter,
 .slide-right-leave-to {
-	transform: translateX(-100%);
+	transform: translateX(100%)
+}
+.slide-right-enter,
+.slide-left-leave-to {
+	transform: translateX(-100%)
 }

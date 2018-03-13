@@ -1,9 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Index from './component/index/index.vue'
-import Server from './component/server/server.vue'
-import Grarantee from './component/grarantee/grarantee.vue'
-import Myself from './component/myself/myself.vue'
+// import Index from './component/index/index.vue'
+// import Server from './component/server/server.vue'
+// import Grarantee from './component/grarantee/grarantee.vue'
+// import Myself from './component/myself/myself.vue'
+
+const Index = () => import('./component/index/index.vue')
+const Server = () => import('./component/server/server.vue')
+const Grarantee = () => import('./component/grarantee/grarantee.vue')
+const Myself = () => import('./component/myself/myself.vue')
 
 Vue.use(VueRouter)
 

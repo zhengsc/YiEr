@@ -2,10 +2,12 @@ import Vue from 'vue'
 import App from './app.vue'
 import router from './router.js'
 import axios from 'axios'
+import Qs from 'qs'
 
 import './index.css'
 
 Vue.prototype.$http = axios
+Vue.prototype.Qs = Qs
 
 let div = document.createElement('div')
 document.body.appendChild(div)
