@@ -17,7 +17,7 @@
 	export default {
 		data() {
 			return {
-				slide: 'slide-left'
+				slide: ''
 			}
 		},
 		components: {
@@ -25,11 +25,14 @@
 		},
 		watch: {
 			'$route'(to, from) {
-				if(to.meta.animation < from.meta.animation) {
-					this.slide = 'slide-right'
-				} else {
-					this.slide = 'slide-left'
+				if(typeof from.meta.animation !== 'undefined') {
+					if(to.meta.animation < from.meta.animation) {
+						this.slide = 'slide-right'
+					} else {
+						this.slide = 'slide-left'
+					}
 				}
+				
 			}
 		}
 	}

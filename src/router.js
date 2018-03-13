@@ -15,11 +15,6 @@ Vue.use(VueRouter)
 
 let routes = [
 	{
-		path: '/',
-		name: 'Index',
-		component: Index
-	},
-	{
 		path: '/index',
 		name: 'Index',
 		component: Index,
@@ -53,7 +48,7 @@ let routes = [
 	},
 	{
 		path: '*',
-		redirect: '/'
+		redirect: '/index'
 	}
 ]
 
@@ -65,12 +60,11 @@ let router = new VueRouter({
 	}
 })
 
-// router.beforeEach(function(to, from, next) {
-// 	if(to.matched.length === 0) {
-// 		from.name ? next({name: from.name}) : next('/index')
-// 	} else {
-// 		next()
-// 	}
-// })
+router.beforeEach(function(to, from, next) {
+	if(!from.name) {
+		console.log(this)
+	}
+	next()
+})
 
 export default router
