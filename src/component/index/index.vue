@@ -59,7 +59,9 @@
 				this.$http.get('/s/baby/getDefaultBaby')
 							.then(function(response) {
 								if(response.data) {
-									_this.babyInfoObject = response.data.data
+									if(response.data.data) {
+										_this.babyInfoObject = response.data.data
+									}
 								}
 							}).catch(function(error) {
 								console.log(error)

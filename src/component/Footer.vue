@@ -8,7 +8,7 @@
 				<i></i>
 				<span>健康服务</span>
 			</router-link>
-			<router-link to="/grarantee">
+			<router-link to="/product">
 				<i></i>
 				<span>健康管理</span>
 			</router-link>
