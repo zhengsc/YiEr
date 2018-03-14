@@ -37,6 +37,7 @@
 						.then(function(response) {
 							_this.isLogin = response.data.data
 							_this.getData()
+							_this.$store.commit('setUserInfo', response.data.data)
 						}).catch(function(error) {
 							console.log(error)
 						})

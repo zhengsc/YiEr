@@ -1,7 +1,7 @@
 <template>
 	<div class="info">
 		<img src="/src/images/myself/baby-icon.png" alt="">
-		<a href="javascript:;">请登录</a>
+		<a href="javascript:;">{{username}}</a>
 	</div>
 </template>
 
@@ -10,6 +10,12 @@
 		data() {
 			return {
 
+			}
+		},
+		computed: {
+			username() {
+				let userInfo = this.$store.state.userInfo
+				return userInfo.mobile ? userInfo.mobile : '请登录'
 			}
 		}
 	}

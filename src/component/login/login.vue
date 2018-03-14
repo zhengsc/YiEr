@@ -1,11 +1,15 @@
 <template>
-	<div class="login">
+	<div id="login" class="login">
 		<div class="username">
-			<input v-model="mobile" type="text" />
-			<input v-model="code" type="code" />
+			<p>
+				<input v-model="mobile" type="text" placeholder="请输入手机号" />
+			</p>
+			<p>
+				<input v-model="code" type="text" class="code" placeholder="请输入验证码" />
+				<button @click="getCode" :class="['btns-code', isWaiting ? 'disabled' : '']">{{btnText}}</button>
+			</p>
 		</div>
 		<div class="btns">
-			<button @click="getCode">验证码</button>
 			<button @click="login">登录</button>
 		</div>
 	</div>
@@ -16,13 +20,16 @@
 		data() {
 			return {
 				mobile: '',
-				code: ''
+				code: '',
+				isWaiting: false,
+				btnText: '获取验证码'
 			}
 		},
 		methods: {
 			getCode() {
 				let _this = this
 
+				if(this.isWaiting) return ;
 				// if(this.mobile) {
 					this.$http.get('/s/login/wx/sendcheckcode?mobile=18310469506')
 								.then(function(response) {
@@ -30,11 +37,28 @@
 
 									if(resp.success) {
 										console.log('验证码发送成功')
+										_this.changeBtnText()
 									}
 								}).catch(function(error) {
 									console.log(error)
 								})
 				// }
+			},
+			changeBtnText() {
+				this.isWaiting = true
+
+				let _this = this
+				let count = 60
+				_this.btnText = count + 's'
+				let timer = setInterval(function() {
+					if(count) {
+						_this.btnText = --count + 's'
+					} else {
+						_this.isWaiting = false
+						_this.btnText = '获取验证码'
+						clearInterval(timer)
+					}
+				}, 1000)
 			},
 			login() {
 				let _this = this
@@ -47,8 +71,6 @@
 
 					if(resp.success) {
 						_this.$store.commit('changeLoginStatus')
-						_this.$store.commit('setUserInfo', resp.data)
-						console.log(_this.$store.state.isLogin)
 					}
 				}).catch(function(error) {
 					console.log(error)
@@ -59,7 +81,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.login {
+	#body div#login {
 		position: fixed;
 		top: 0;
 		bottom: 0;
@@ -69,19 +91,52 @@
 		> div {
 			width: 80%;
 			margin: auto;
+			&.username {
+				margin-top: 2rem;
+			}
+		}
+		p {
+			margin: .2rem 0;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 		input {
-			width: 100%;
+			flex-grow: 1;
+			width: 1rem;
 			height: .8rem;
 			padding: 0 .2rem;
-			margin: .2rem 0;
-			font-size: 28px;
+			font-size: 26px;
+			border-radius: .2rem;
+			border: 1px solid #e1e1e1;
+			outline: 0;
+			background: 0;
+			&.code {
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+			}
 		}
 		button {
-			display: inline-block;
-			width: 40%;
-			height: 1rem;
-			font-size: 28px;
+			display: block;
+			width: 3rem;
+			height: .8rem;
+			font-size: 26px;
+			background: #f5aa2b;
+			color: #fff;
+			text-align: center;
+			border-radius: .1rem;
+			margin: .4rem auto;
+			&.btns-code {
+				width: 2rem;
+				flex-shrink: 0;
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+				&.disabled {
+					background: #e1e1e1;
+					
+				}
+			}
 		}
 	}
 </style>
