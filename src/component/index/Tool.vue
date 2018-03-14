@@ -59,7 +59,8 @@
 				this.$router.push(this.ad.href)
 			},
 			goAllTool() {
-				this.$router.push('')
+				// this.$router.push('/tool')
+				this.$store.commit('changeLoginStatus')
 			}
 		}
 	}

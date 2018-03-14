@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './app.vue'
 import router from './router.js'
+import store from './store.js'
 import axios from 'axios'
 import Qs from 'qs'
 
@@ -15,6 +16,7 @@ document.body.appendChild(div)
 
 let app = new Vue({
 	router,
+	store,
 	render: h => h(App),
 	
 })

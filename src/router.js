@@ -15,7 +15,7 @@ Vue.use(VueRouter)
 
 let routes = [
 	{
-		path: '/index',
+		path: '/',
 		name: 'Index',
 		component: Index,
 		meta: {
@@ -45,26 +45,14 @@ let routes = [
 		meta: {
 			animation: 3
 		}
-	},
-	{
-		path: '*',
-		redirect: '/index'
 	}
 ]
 
 let router = new VueRouter({
 	mode: 'history',
-	routes,
-	scrollBehavior(to, from, savedPosition) {
-		console.log(savedPosition)
-	}
+	routes
 })
 
-router.beforeEach(function(to, from, next) {
-	if(!from.name) {
-		console.log(this)
-	}
-	next()
-})
+
 
 export default router
