@@ -9,8 +9,11 @@ let store = new Vuex.Store({
 		userInfo: {}
 	},
 	mutations: {
-		changeLoginStatus(state) {
-			state.isLogin = !state.isLogin
+		loginIn(state) {
+			state.isLogin = true
+		},
+		loginOut(state) {
+			state.isLogin = false
 		},
 		setUserInfo(state, user) {
 			state.userInfo = user

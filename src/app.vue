@@ -7,9 +7,9 @@
 				</keep-alive>
 			</transition>
 			<Footer></Footer>
-			<transition :name="loginSlide">
+			<!-- <transition :name="loginSlide">
 				<Login v-if="isLogin" />
-			</transition>
+			</transition> -->
 			
 		</div>
 	<!-- </div> -->
@@ -17,7 +17,6 @@
 
 <script>
 	import Footer from './component/Footer.vue'
-	import Login from './component/login/login.vue'
 
 	export default {
 		data() {
@@ -25,17 +24,8 @@
 				slide: ''
 			}
 		},
-		computed: {
-			isLogin() {
-				return !this.$store.state.isLogin
-			},
-			loginSlide() {
-				return this.$store.state.isLogin ? 'slide-up' : 'slide-down'
-			}
-		},
 		components: {
-			Footer,
-			Login
+			Footer
 		},
 		watch: {
 			'$route'(to, from) {

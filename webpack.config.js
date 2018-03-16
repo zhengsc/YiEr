@@ -47,7 +47,7 @@ let config = {
 	],
 
 	devServer: {
-		port: 8000,
+		port: 8010,
 		host: '0.0.0.0',
 		hot: true,
 		overlay: {
@@ -62,7 +62,8 @@ let config = {
 				target: 'http://toc.minganonline.com',
 				changeOrigin: true
 			}
-		}
+		},
+		historyApiFallback: true
 	}
 }
 module.exports = config
