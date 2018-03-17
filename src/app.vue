@@ -6,7 +6,9 @@
 					<router-view></router-view>
 				</keep-alive>
 			</transition>
-			<Footer></Footer>
+			<transition name="slide-down">
+				<Footer v-if="showFooter"></Footer>
+			</transition>
 			
 			<!-- <transition :name="loginSlide"> -->
 				<Login v-if="isLogin" :show="isLogin" />
@@ -24,7 +26,8 @@
 		data() {
 			return {
 				slide: '',
-				loginSlide: 'slide-up'
+				loginSlide: 'slide-up',
+				showFooter: true
 			}
 		},
 		computed: {
@@ -46,6 +49,7 @@
 					}
 				}
 				
+				this.showFooter = to.meta.level === 1
 			}
 		}
 	}

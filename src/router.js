@@ -9,6 +9,7 @@ const Index = () => import('./component/index/index.vue')
 const Server = () => import('./component/server/server.vue')
 const Product = () => import('./component/product/product.vue')
 const Myself = () => import('./component/myself/myself.vue')
+const ProductDetail = () => import('./component/product/detail.vue')
 
 Vue.use(VueRouter)
 
@@ -19,7 +20,8 @@ let routes = [
 		name: 'Index',
 		component: Index,
 		meta: {
-			animation: 0
+			animation: 0,
+			level: 1
 		}
 	},
 	{
@@ -27,7 +29,8 @@ let routes = [
 		name: 'Server',
 		component: Server,
 		meta: {
-			animation: 1
+			animation: 1,
+			level: 1
 		}
 	},
 	{
@@ -35,7 +38,8 @@ let routes = [
 		name: 'Product',
 		component: Product,
 		meta: {
-			animation: 2
+			animation: 2,
+			level: 1
 		}
 	},
 	{
@@ -43,7 +47,16 @@ let routes = [
 		name: 'Myself',
 		component: Myself,
 		meta: {
-			animation: 3
+			animation: 3,
+			level: 1
+		}
+	},
+	{
+		path: '/product/detail/:id',
+		name: 'ProductDetail',
+		component: ProductDetail,
+		meta: {
+			level: 2
 		}
 	}
 ]

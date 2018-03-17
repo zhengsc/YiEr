@@ -7,6 +7,7 @@
 			class="product"
 			v-for="product in list"
 			:key="product.id"
+			@click="goDetail(product.id)"
 		>
 			<img :src="'/uploads/img/' + product.icon + '_b.png'" alt="" />
 			<div class="product-info">
@@ -61,6 +62,9 @@
 						return (count + '年')
 						break;
 				}
+			},
+			goDetail(id) {
+				this.$router.push(`/product/detail/${id}`)
 			}
 		}
 	}
