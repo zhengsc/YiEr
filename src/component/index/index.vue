@@ -9,6 +9,8 @@
 		<Video 
 			:video="video"
 		/>
+		<Article 
+		/>
 	</div>
 </template>
 
@@ -16,6 +18,7 @@
 	import BabyInfo from './babyInfo.vue'
 	import Tool from './Tool.vue'
 	import Video from './Video.vue'
+	import Article from './article.vue'
 
 	export default {
 		data() {
@@ -48,7 +51,8 @@
 		components: {
 			BabyInfo,
 			Tool,
-			Video
+			Video,
+			Article
 		},
 		methods: {
 			getData() {

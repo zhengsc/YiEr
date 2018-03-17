@@ -62,7 +62,7 @@
 				// this.$router.push('/tool')
 				// this.$store.commit('changeLoginStatus')
 
-				this.$showLogin()
+				this.$store.commit('loginIn')
 			}
 		}
 	}

@@ -47,6 +47,18 @@
 			justify-content: space-between;
 			align-items: center;
 			border-bottom: 4px solid #ff950c;
+			span {
+				display: flex;
+				align-items: center;
+				i {
+					display: inline-block;
+					margin-right: .2rem;
+					width: .44rem;
+					height: .44rem;
+					background: url('/src/images/index/video-title-icon.png') no-repeat center center;
+					background-size: cover;
+				}
+			}
 			button {
 				color: #ff950c;
 				font-size: 24px;

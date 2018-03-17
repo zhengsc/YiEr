@@ -1,5 +1,5 @@
 <template>
-	<div id="login" :class="['login', showLogin ? 'show' : '']">
+	<div id="login" :class="['login', show ? 'show' : '']">
 		<div class="username">
 			<p>
 				<input v-model="mobile" type="text" placeholder="请输入手机号" />
@@ -18,13 +18,18 @@
 
 <script>
 	export default {
+		props: {
+			show: {
+				type: Boolean,
+				required: true
+			}
+		},
 		data() {
 			return {
 				mobile: '',
 				code: '',
 				isWaiting: false,
-				btnText: '获取验证码',
-				showLogin: false
+				btnText: '获取验证码'
 			}
 		},
 		methods: {
@@ -79,14 +84,20 @@
 				})
 			},
 			close() {
-				this.$closeLogin()
+				this.$store.commit('loginOut')
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	#login {
+	@keyframes show {
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+	#body div#login {
 		position: fixed;
 		top: 0;
 		bottom: 0;
@@ -95,10 +106,9 @@
 		background: #fff;
 		transform: translateY(20%);
 		opacity: 0;
-		transition: all .2s ease-out;
 		&.show {
-			transform: translateY(0);
-			opacity: 1;
+			animation: show .2s ease;
+			animation-fill-mode: forwards;
 		}
 		> div {
 			width: 80%;

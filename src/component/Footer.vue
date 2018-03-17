@@ -41,6 +41,7 @@
 		justify-content: center;
 		align-items: center;
 		border-top: 1px solid #909090;
+		background: #fff;
 		a {
 			flex-grow: 1;
 			display: flex;

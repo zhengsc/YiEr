@@ -7,25 +7,34 @@
 				</keep-alive>
 			</transition>
 			<Footer></Footer>
-			<!-- <transition :name="loginSlide">
-				<Login v-if="isLogin" />
-			</transition> -->
 			
+			<!-- <transition :name="loginSlide"> -->
+				<Login v-if="isLogin" :show="isLogin" />
+			<!-- </transition> -->
 		</div>
+		
 	<!-- </div> -->
 </template>
 
 <script>
 	import Footer from './component/Footer.vue'
+	import Login from './component/Login/Login.vue'
 
 	export default {
 		data() {
 			return {
-				slide: ''
+				slide: '',
+				loginSlide: 'slide-up'
+			}
+		},
+		computed: {
+			isLogin() {
+				return this.$store.state.isLogin
 			}
 		},
 		components: {
-			Footer
+			Footer,
+			Login
 		},
 		watch: {
 			'$route'(to, from) {
