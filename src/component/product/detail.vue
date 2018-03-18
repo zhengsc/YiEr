@@ -19,7 +19,7 @@
 				<i :class="['icon', showServer ? 'show' : '']"></i>
 			</div>
 			<!-- <transition name="slide-down"> -->
-				<ul class="content" v-if="showServer">
+				<ul class="content" v-show="showServer">
 					<li>
 						<i></i>
 						<p>

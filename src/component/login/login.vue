@@ -1,8 +1,9 @@
 <template>
 	<div id="login" :class="['login', show ? 'show' : '']">
+		<img src="/src/images/icon/login-logo.png" alt="">
 		<div class="username">
 			<p>
-				<input v-model="mobile" type="text" placeholder="请输入手机号" />
+				<input v-model="mobile" @input="input" type="text" placeholder="请输入手机号" />
 			</p>
 			<p>
 				<input v-model="code" type="text" class="code" placeholder="请输入验证码" />
@@ -28,11 +29,16 @@
 			return {
 				mobile: '',
 				code: '',
-				isWaiting: false,
+				isWaiting: true,
 				btnText: '获取验证码'
 			}
 		},
 		methods: {
+			input(e) {
+				let val = e.target.value
+
+				this.isWaiting = !/^(13|14|16|17|18)\d{9}$/.test(val.trim())
+			},
 			getCode() {
 				let _this = this
 
@@ -110,11 +116,17 @@
 			animation: show .2s ease;
 			animation-fill-mode: forwards;
 		}
+		img {
+			display: block;
+			width: 2.9rem;
+			height: auto;
+			margin: 1.8rem auto 0;
+		}
 		> div {
 			width: 80%;
 			margin: auto;
 			&.username {
-				margin-top: 2rem;
+				margin-top: 1rem;
 			}
 		}
 		p {
