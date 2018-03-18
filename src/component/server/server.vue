@@ -25,6 +25,13 @@
 
 <style lang="scss" scoped>
 	.server {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 1rem;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;

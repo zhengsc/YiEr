@@ -56,7 +56,8 @@ let routes = [
 		name: 'ProductDetail',
 		component: ProductDetail,
 		meta: {
-			level: 2
+			level: 2,
+			animation: 4
 		}
 	}
 ]

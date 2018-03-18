@@ -13,7 +13,7 @@
 			<div class="product-info">
 				<h3>{{product.name}}</h3>
 				<p v-if="product.status === 1">
-					<span class="price">{{product.price / 100}}</span>
+					<span class="price">{{(product.price / 100).toFixed(2)}}</span>
 					<span>元 / </span>
 					<span class="unit">{{productUnit(product.validTimeCount, product.validTimeUnit)}}</span>
 				</p>

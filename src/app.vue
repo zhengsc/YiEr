@@ -1,13 +1,13 @@
 <template>
 	<!-- <div> -->
 		<div id="body">
-			<transition :name="slide">
-				<keep-alive>
-					<router-view></router-view>
-				</keep-alive>
-			</transition>
-			<transition name="slide-down">
-				<Footer v-if="showFooter"></Footer>
+				<transition :name="slide">
+					<keep-alive>
+						<router-view></router-view>
+					</keep-alive>
+				</transition>
+			<transition :name="footerSlide">
+				<Footer v-show="showFooter"></Footer>
 			</transition>
 			
 			<!-- <transition :name="loginSlide"> -->
@@ -27,7 +27,8 @@
 			return {
 				slide: '',
 				loginSlide: 'slide-up',
-				showFooter: true
+				showFooter: true,
+				footerSlide: 'slide-down'
 			}
 		},
 		computed: {
@@ -50,6 +51,10 @@
 				}
 				
 				this.showFooter = to.meta.level === 1
+
+				this.footerSlide = to.meta.level < from.meta.level ? 'slide-up' : 'slide-down'
+
+				console.log(to.meta.level + '--' + from.meta.level)
 			}
 		}
 	}
@@ -64,12 +69,5 @@
 		right: 0;
 		padding-bottom: 1rem;
 		overflow: hidden;
-		> div:not(#footer) {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 1rem;
-		}
 	}
 </style>

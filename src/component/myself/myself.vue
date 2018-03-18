@@ -25,6 +25,11 @@
 
 <style lang="scss" scoped>
 	.myself {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 1rem;
 		overflow: auto;
 		background: #efefef;
 		-webkit-overflow-scrolling: touch;
