@@ -1,7 +1,7 @@
 <template>
 	<div class="detail">
 		<div class="product-title">
-			<img src="" alt="">
+			<img :src="'/uploads/img/' + detail.icon + '_s.png'" alt="">
 			<div class="product-info">
 				<p>{{detail.name}}</p>
 				<p class="info-desc">{{detail.description}}</p>
@@ -125,7 +125,7 @@
 				}
 			}
 		},
-		created() {
+		activated() {
 			let _this = this
 
 			this.$http.post('/s/product/detail', this.Qs.stringify({
@@ -152,6 +152,7 @@
 		bottom: 0;
 		overflow: auto;
 		-webkit-overflow-scrolling: touch;
+		background: #efefef;
 		> div {
 			background-color: #fff;
 		}

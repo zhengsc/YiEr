@@ -1,6 +1,6 @@
 <template>
   <div id="footer" class="footer">
-			<router-link to="/">
+			<router-link to="/" exact>
 				<i></i>
 				<span>首页</span>
 			</router-link>
