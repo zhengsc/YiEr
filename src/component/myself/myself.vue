@@ -8,7 +8,7 @@
 
 <script>
 	import Info from './Info.vue'
-	import Menu from './Menu.vue'
+	import Menu from './menu.vue'
 
 	export default {
 		data() {

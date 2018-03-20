@@ -4,7 +4,7 @@
 			<img src="/src/images/myself/server-icon.png" alt="">
 			<p>我的服务</p>
 		</a>
-		<a href="javascript:;">
+		<a href="javascript:;" @click="go2BabyList">
 			<img src="/src/images/myself/baby-list-icon.png" alt="">
 			<p>我的宝宝</p>
 		</a>
@@ -25,7 +25,16 @@
 
 <script>
 	export default {
+		data() {
+			return {
 
+			}
+		},
+		methods: {
+			go2BabyList() {
+				this.$router.push('/babyList')
+			}
+		}
 	}
 </script>
 

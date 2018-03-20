@@ -92,6 +92,7 @@
 </template>
 
 <script>
+	import Api from '../../assest/Api.js'
 	export default {
 		data() {
 			return {
@@ -128,7 +129,7 @@
 		activated() {
 			let _this = this
 
-			this.$http.post('/s/product/detail', this.Qs.stringify({
+			this.$http.post(Api.productDetail, this.Qs.stringify({
 				productId: this.$route.params.id
 			})).then(function(response) {
 				let resp = response.data

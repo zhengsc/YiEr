@@ -22,8 +22,8 @@
 </template>
 
 <script>
-	import Location from './Location.vue';
-	import Score from './Score.vue'
+	import Location from './location.vue';
+	import Score from './score.vue'
 
 	export default {
 		props: {

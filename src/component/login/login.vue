@@ -18,6 +18,8 @@
 </template>
 
 <script>
+	import Api from '../../assest/Api.js'
+
 	export default {
 		props: {
 			show: {
@@ -44,17 +46,20 @@
 
 				if(this.isWaiting) return ;
 				// if(this.mobile) {
-					this.$http.get('/s/login/wx/sendcheckcode?mobile=18310469506')
-								.then(function(response) {
-									let resp = response.data
+					this.$http.get(Api.getCode, {
+						params: {
+							mobile: '18310469506'
+						}
+					}).then(function(response) {
+						let resp = response.data
 
-									if(resp.success) {
-										console.log('验证码发送成功')
-										_this.changeBtnText()
-									}
-								}).catch(function(error) {
-									console.log(error)
-								})
+						if(resp.success) {
+							console.log('验证码发送成功')
+							_this.changeBtnText()
+						}
+					}).catch(function(error) {
+						console.log(error)
+					})
 				// }
 			},
 			changeBtnText() {
@@ -76,7 +81,7 @@
 			login() {
 				let _this = this
 
-				this.$http.post('/s/login/YIERWAP/userbinding', this.Qs.stringify({
+				this.$http.post(Api.userBinding, this.Qs.stringify({
 					mobile: '18310469506',
 					checkcode: '123456'
 				})).then(function(response) {

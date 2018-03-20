@@ -24,8 +24,9 @@
 </template>
 
 <script>
-	import Products from './Products.vue'
-	import Loading from '../Loading/Loading.vue'
+	import Api from '../../assest/Api.js'
+	import Products from './products.vue'
+	import Loading from '../loading/loading.vue'
 
 	export default {
 		data() {
@@ -43,7 +44,7 @@
 		created() {
 			let _this = this
 
-			this.$http.post('/s/product/list', this.Qs.stringify({
+			this.$http.post(Api.productList, this.Qs.stringify({
 				regionId: '110100',
 				type: '',
 				channel: 'YIERWAP'

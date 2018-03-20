@@ -10,6 +10,7 @@ const Server = () => import('./component/server/server.vue')
 const Product = () => import('./component/product/product.vue')
 const Myself = () => import('./component/myself/myself.vue')
 const ProductDetail = () => import('./component/product/detail.vue')
+const babyList = () => import('./component/myself/babyList.vue')
 
 Vue.use(VueRouter)
 
@@ -56,6 +57,16 @@ let routes = [
 		name: 'ProductDetail',
 		component: ProductDetail,
 		meta: {
+			level: 2,
+			animation: 4
+		}
+	},
+	{
+		path: '/babyList',
+		name: 'BabyList',
+		component: babyList,
+		meta: {
+			login: true,
 			level: 2,
 			animation: 4
 		}

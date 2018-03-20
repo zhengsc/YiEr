@@ -15,9 +15,10 @@
 </template>
 
 <script>
+	import Api from '../../assest/Api.js'
 	import BabyInfo from './babyInfo.vue'
-	import Tool from './Tool.vue'
-	import Video from './Video.vue'
+	import Tool from './tool.vue'
+	import Video from './video.vue'
 	import Article from './article.vue'
 
 	export default {
@@ -36,7 +37,7 @@
 		created() {
 			let _this = this
 
-			this.$http.get('/s/login/userInfo')
+			this.$http.get(Api.userInfo)
 						.then(function(response) {
 							_this.isLogin = response.data.data
 							_this.getData()
@@ -61,7 +62,7 @@
 			getDefaultBabyInfo() {
 				let _this = this
 
-				this.$http.get('/s/baby/getDefaultBaby')
+				this.$http.get(Api.getDefaultBabyInfo)
 							.then(function(response) {
 								if(response.data) {
 									if(response.data.data) {
@@ -77,39 +78,47 @@
 			getAdObject() {
 				let _this = this
 
-				this.$http.get('/s/banner/queryShowBanner?place=1')
-							.then(function(response) {
-								let resp = response.data
+				this.$http.get(Api.queryShowBanner, {
+					params: {
+						place: 1
+					}
+				}).then(function(response) {
+					let resp = response.data
 
-								if(resp.success) {
-									_this.ad = resp.data.length > 0 ? resp.data[0] : {
-										href: 'http://toc.minganonline.com/pages/trainChildTool.html',
-										image: '/uploads/banner/eefc5603c6cd4848af9fc9b841faf9f0.jpg'
-									}
-								}
-							}).catch(function(error) {
+					if(resp.success) {
+						_this.ad = resp.data.length > 0 ? resp.data[0] : {
+							href: 'http://toc.minganonline.com/pages/trainChildTool.html',
+							image: '/uploads/banner/eefc5603c6cd4848af9fc9b841faf9f0.jpg'
+						}
+					}
+				}).catch(function(error) {
 
-							})
+				})
 
 				return this
 			},
 			getVideoObject() {
 				let _this = this
 
-				this.$http.get('/s/appArticle/getArticlesByCatalogId?start=1&end=1&catalogId=22')
-							.then(function(response) {
-								let resp = response.data
+				this.$http.get(Api.getArticlesByCatalogId, {
+					params: {
+						start: 1,
+						end: 1,
+						catalogId: 22
+					}
+				}).then(function(response) {
+						let resp = response.data
 
-								if(resp.success) {
-									_this.video = resp.data[0] || {
-										description: '描述',
-										path: '/uploads/onLineFile/4/2504.html',
-										picture: '/uploads/article//titleImgFile/4/b3c99de38f2748b2acc28da4bb1f8566.png'
-									}
-								}
-							}).catch(function(error) {
+						if(resp.success) {
+							_this.video = resp.data[0] || {
+								description: '描述',
+								path: '/uploads/onLineFile/4/2504.html',
+								picture: '/uploads/article//titleImgFile/4/b3c99de38f2748b2acc28da4bb1f8566.png'
+							}
+						}
+					}).catch(function(error) {
 
-							})
+					})
 
 				return this
 			}

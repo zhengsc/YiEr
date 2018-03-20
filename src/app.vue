@@ -19,8 +19,8 @@
 </template>
 
 <script>
-	import Footer from './component/Footer.vue'
-	import Login from './component/Login/Login.vue'
+	import Footer from './component/footer.vue'
+	import Login from './component/login/login.vue'
 
 	export default {
 		data() {
@@ -42,6 +42,12 @@
 		},
 		watch: {
 			'$route'(to, from) {
+				if(to.meta.login) {
+					if(!this.$store.state.isLogin) {
+						// this.$store.commit('loginIn')
+						// return 
+					}
+				}
 				if(typeof from.meta.animation !== 'undefined') {
 					if(to.meta.animation < from.meta.animation) {
 						this.slide = 'slide-right'
@@ -53,8 +59,6 @@
 				this.showFooter = to.meta.level === 1
 
 				this.footerSlide = to.meta.level < from.meta.level ? 'slide-up' : 'slide-down'
-
-				console.log(to.meta.level + '--' + from.meta.level)
 			}
 		}
 	}

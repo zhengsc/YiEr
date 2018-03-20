@@ -26,13 +26,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="nomsg" v-else>
-		<img src="/src/images/product/nomsg-icon.png" alt="">
-		<p>您还没有订购产品</p>
-	</div>
+	<nomsg v-else :msg="nomsg"></nomsg>
 </template>
 
 <script>
+	import Nomsg from '../nomsg.vue'
+
 	export default {
 		props: {
 			list: {
@@ -40,9 +39,12 @@
 				required: true
 			}
 		},
+		components: {
+			Nomsg
+		},
 		data() {
 			return {
-
+				nomsg: '您还没有订购产品'
 			}
 		},
 		methods: {
@@ -110,20 +112,6 @@
 			}
 		}
 	}
-	.nomsg {
-		font-size: 0;
-		img {
-			display: block;
-			width: 3.3rem;
-			height: 3.28rem;
-			margin: auto;
-		}
-		p {
-			color: rgb(160, 160, 160);
-			font-size: 28px;
-			text-align: center;
-			margin-top: .4rem;
-		}
-	}
+	
 </style>
 
