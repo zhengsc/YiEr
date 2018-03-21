@@ -12,6 +12,7 @@
 				class="article" 
 				v-for="article in articleList" 
 				:key="article.id"
+				@click="goArticleDetail(article.path)"
 			>
 				<div class="article-info">
 					<p>{{article.title}}</p>
@@ -63,6 +64,9 @@
 				}).catch(function(error) {
 					console.log(error)
 				})
+			},
+			goArticleDetail(href) {
+				location.href = 'uploads/article/' + href
 			}
 		}
 	}
