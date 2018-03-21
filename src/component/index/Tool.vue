@@ -10,7 +10,7 @@
 				<span>{{height}} cm</span>
 				<span>{{weight}} kg</span>	
 			</p>
-			<button>修改</button>
+			<button @click="showAlert">修改</button>
 		</div>
 		<div class="ad">
 			<img 
@@ -66,6 +66,16 @@
 			},
 			go2Read() {
 				this.$router.push('/read')
+			},
+			showAlert() {
+				this.$Alert({
+					content: 'hello world',
+					btns: ['确认', '取消']
+				}).then(function() {
+					console.log('点击了确认')
+				}).catch(function() {
+					console.log('点击了取消')
+				})
 			}
 		}
 	}

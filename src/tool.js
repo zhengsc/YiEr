@@ -1,8 +1,7 @@
-// import {showLogin, closeLogin} from './component/Tool/Login/index.js'
+import Alert from './component/dialog/index.js'
 
-// let install = (Vue) => {
-// 	Vue.prototype.$showLogin = showLogin
-// 	Vue.prototype.$closeLogin = closeLogin
-// }
+let install = (Vue) => {
+	Vue.prototype.$Alert = Alert
+}
 
-// export default install
+export default install
