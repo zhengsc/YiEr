@@ -19,6 +19,15 @@ button {
 	outline: 0;
 	background: none;
 }
+
+.clearfix:after {
+	content: '';
+	display: block;
+	width: 0;
+	height: 0;
+	clear: both;
+}
+
 .slide-left-enter-active,
 .slide-right-enter-active,
 .slide-up-enter-active,

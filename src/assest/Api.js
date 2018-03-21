@@ -8,5 +8,7 @@ export default {
 	userBinding: '/s/login/YIERWAP/userbinding',
 	productDetail: '/s/product/detail',
 	productList: '/s/product/list',
-	babyList: '/s/baby/list'
+	babyList: '/s/baby/list',
+	readTags: '/s/sysDailyReader/tags',
+	getReadContent: '/s/sysDailyReader/dayRead'
 }

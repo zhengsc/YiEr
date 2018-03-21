@@ -2,7 +2,7 @@
 	<div class="index-tool">
 		<div class="everyday-read">
 			<p>{{text}}</p>
-			<button>更多</button>
+			<button @click="go2Read">更多</button>
 		</div>
 		<div class="growth">
 			<p>
@@ -63,6 +63,9 @@
 				// this.$store.commit('changeLoginStatus')
 
 				this.$store.commit('loginIn')
+			},
+			go2Read() {
+				this.$router.push('/read')
 			}
 		}
 	}
