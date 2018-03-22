@@ -44,35 +44,31 @@
 			}
 		},
 		activated() {
-			let _this = this
-
 			this.$http.get(Api.readTags)
-						.then(function(response) {
+						.then(response => {
 							let resp = response.data
 
 							if(resp.success) {
-								_this.tags = resp.data.slice(0)
-								_this.getContent(_this.tags[0].tag)
+								this.tags = resp.data.slice(0)
+								this.getContent(this.tags[0].tag)
 							}
-						}).catch(function(error) {
+						}).catch(error => {
 							console.log(error)
 						})
 		},
 		methods: {
 			getContent(id) {
-				let _this = this
-
 				this.$http.get(Api.getReadContent, {
 					params: {
 						period: id
 					}
-				}).then(function(response) {
+				}).then(response => {
 					let resp = response.data
 
 					if(resp.success) {
-						_this.content = resp.data.slice(0)
+						this.content = resp.data.slice(0)
 					}
-				}).catch(function(error) {
+				}).catch(error => {
 					console.log(error)
 				})
 			},

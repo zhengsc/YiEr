@@ -1,19 +1,16 @@
 <template>
-	<div class="dialog-wrap" v-show="show">
-		<transition name="slide-down">
-			<div class="dialog-inner">
+	<transition name="fade" appear>
+		<div v-if="show" class="dialog-wrap">
+			<div class="dialog-inner" key="inner">
 				<h3>{{title}}</h3>
 				<div class="dialog-content">{{content}}</div>
-				<div class="btns" v-if="typeof btns === 'string'">
-					<button @click="success">{{btns}}</button>
-				</div>
-				<div class="btns" v-else>
-					<button @click="success">{{btns[0]}}</button>
-					<button @click="cancel">{{btns[1]}}</button>
+				<div class="btns">
+					<button @click="success">{{confirmBtnText}}</button>
+					<button v-if="cancelBtnText" @click="cancel">{{cancelBtnText}}</button>
 				</div>
 			</div>
-		</transition>
-	</div>	
+		</div>	
+	</transition>
 </template>
 
 <script>
@@ -23,7 +20,8 @@
 				show: true,
 				content: '',
 				title: '提示',
-				btns: '确认'
+				confirmBtnText: '确认',
+				cancelBtnText: ''
 			}
 		},
 		methods: {
@@ -31,6 +29,7 @@
 			cancel() {}
 		}
 	}
+
 </script>
 
 <style lang="scss" scoped>
@@ -41,7 +40,6 @@
 		justify-content: $justify;
 		align-items: $align;
 	}
-
 	.dialog-wrap {
 		position: fixed;
 		top: 0;
@@ -51,13 +49,32 @@
 		background: rgba(0, 0, 0, 0.4);
 		z-index: 99;
 		@include flex;
+		&.fade-enter-active,
+		&.fade-leave-active {
+			.dialog-inner {
+				transition: all .2s;
+			}
+		}
+		&.fade-enter,
+		&.fade-leave-to {
+			.dialog-inner {
+				opacity: 0;
+				transform: scale(.7);
+			}
+			
+		}
+		&.fade-leave,
+		&.fade-active-to {
+			.dialog-inner {
+				opacity: 1;
+				transform: scale(1);
+			}
+		}
 		.dialog-inner {
 			width: 75%;
 			height: auto;
 			border-radius: .1rem;
 			overflow: hidden;
-			@include flex;
-			flex-direction: column;
 		}
 		h3 {
 			width: 100%;

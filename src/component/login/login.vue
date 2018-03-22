@@ -42,55 +42,50 @@
 				this.isWaiting = !/^(13|14|16|17|18)\d{9}$/.test(val.trim())
 			},
 			getCode() {
-				let _this = this
-
 				if(this.isWaiting) return ;
 				// if(this.mobile) {
 					this.$http.get(Api.getCode, {
 						params: {
 							mobile: '18310469506'
 						}
-					}).then(function(response) {
+					}).then(response => {
 						let resp = response.data
 
 						if(resp.success) {
 							console.log('验证码发送成功')
-							_this.changeBtnText()
+							this.changeBtnText()
 						}
-					}).catch(function(error) {
+					}).catch(error => {
 						console.log(error)
 					})
 				// }
 			},
 			changeBtnText() {
 				this.isWaiting = true
-
-				let _this = this
 				let count = 60
-				_this.btnText = count + 's'
-				let timer = setInterval(function() {
+
+				this.btnText = count + 's'
+				let timer = setInterval(() => {
 					if(count) {
-						_this.btnText = --count + 's'
+						this.btnText = --count + 's'
 					} else {
-						_this.isWaiting = false
-						_this.btnText = '获取验证码'
+						this.isWaiting = false
+						this.btnText = '获取验证码'
 						clearInterval(timer)
 					}
 				}, 1000)
 			},
 			login() {
-				let _this = this
-
 				this.$http.post(Api.userBinding, this.Qs.stringify({
 					mobile: '18310469506',
 					checkcode: '123456'
-				})).then(function(response) {
+				})).then(response => {
 					let resp = response.data
 
 					if(resp.success) {
-						_this.$store.commit('loginIn')
+						this.$store.commit('loginIn')
 					}
-				}).catch(function(error) {
+				}).catch(error => {
 					console.log(error)
 				})
 			},

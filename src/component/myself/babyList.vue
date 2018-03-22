@@ -32,15 +32,13 @@
 			}
 		},
 		activated() {
-			let _this = this
-
-			this.$http.post(Api.babyList).then(function(response) {
+			this.$http.post(Api.babyList).then(response => {
 				let resp = response.data
 
 				if(resp.success) {
-					_this.babys = resp.data.slice(0)
+					this.babys = resp.data.slice(0)
 				}
-			}).catch(function(error) {
+			}).catch(error => {
 				console.log(error)
 			})
 		},

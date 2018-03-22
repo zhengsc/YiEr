@@ -35,14 +35,12 @@
 			}
 		},
 		created() {
-			let _this = this
-
 			this.$http.get(Api.userInfo)
-						.then(function(response) {
-							_this.isLogin = response.data.data
-							_this.getData()
-							_this.$store.commit('setUserInfo', response.data.data)
-						}).catch(function(error) {
+						.then(response => {
+							this.isLogin = response.data.data
+							this.getData()
+							this.$store.commit('setUserInfo', response.data.data)
+						}).catch(error => {
 							console.log(error)
 						})
 		},
@@ -60,16 +58,14 @@
 				this.getAdObject().getDefaultBabyInfo().getVideoObject()
 			},
 			getDefaultBabyInfo() {
-				let _this = this
-
 				this.$http.get(Api.getDefaultBabyInfo)
-							.then(function(response) {
+							.then(response => {
 								if(response.data) {
 									if(response.data.data) {
-										_this.babyInfoObject = response.data.data
+										this.babyInfoObject = response.data.data
 									}
 								}
-							}).catch(function(error) {
+							}).catch(error => {
 								console.log(error)
 							})
 
@@ -82,41 +78,39 @@
 					params: {
 						place: 1
 					}
-				}).then(function(response) {
+				}).then(response => {
 					let resp = response.data
 
 					if(resp.success) {
-						_this.ad = resp.data.length > 0 ? resp.data[0] : {
+						this.ad = resp.data.length > 0 ? resp.data[0] : {
 							href: 'http://toc.minganonline.com/pages/trainChildTool.html',
 							image: '/uploads/banner/eefc5603c6cd4848af9fc9b841faf9f0.jpg'
 						}
 					}
-				}).catch(function(error) {
+				}).catch(error => {
 
 				})
 
 				return this
 			},
 			getVideoObject() {
-				let _this = this
-
 				this.$http.get(Api.getArticlesByCatalogId, {
 					params: {
 						start: 1,
 						end: 1,
 						catalogId: 22
 					}
-				}).then(function(response) {
+				}).then(response => {
 						let resp = response.data
 
 						if(resp.success) {
-							_this.video = resp.data[0] || {
+							this.video = resp.data[0] || {
 								description: '描述',
 								path: '/uploads/onLineFile/4/2504.html',
 								picture: '/uploads/article//titleImgFile/4/b3c99de38f2748b2acc28da4bb1f8566.png'
 							}
 						}
-					}).catch(function(error) {
+					}).catch(error => {
 
 					})
 

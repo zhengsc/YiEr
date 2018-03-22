@@ -127,17 +127,15 @@
 			}
 		},
 		activated() {
-			let _this = this
-
 			this.$http.post(Api.productDetail, this.Qs.stringify({
 				productId: this.$route.params.id
-			})).then(function(response) {
+			})).then(response => {
 				let resp = response.data
 				
 				if(resp.success) {
-					_this.detail = resp.data
+					this.detail = resp.data
 				}
-			}).catch(function(error) {
+			}).catch(error => {
 				console.log(error)
 			})
 		}

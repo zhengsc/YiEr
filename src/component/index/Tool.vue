@@ -70,7 +70,7 @@
 			showAlert() {
 				this.$Alert({
 					content: 'hello world',
-					btns: ['确认', '取消']
+					cancelBtnText: '取消'
 				}).then(function() {
 					console.log('点击了确认')
 				}).catch(function() {

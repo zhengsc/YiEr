@@ -42,21 +42,19 @@
 			Loading
 		},
 		created() {
-			let _this = this
-
 			this.$http.post(Api.productList, this.Qs.stringify({
 				regionId: '110100',
 				type: '',
 				channel: 'YIERWAP'
-			})).then(function(response) {
+			})).then(response => {
 				let resp = response.data
 
 				if(resp.success) {
-					_this.list = resp.data
-					_this.filterList = resp.data
+					this.list = resp.data
+					this.filterList = resp.data
 				}
 
-				_this.isShowLoading = false
+				this.isShowLoading = false
 			})
 		},
 		methods: {

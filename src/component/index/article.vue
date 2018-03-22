@@ -47,21 +47,20 @@
 		},
 		methods: {
 			getArticle() {
-				let _this = this
 
 				this.$http.get('/s/appArticle/favourite', {
 					params: {
-						start: _this.start,
-						end: _this.end
+						start: this.start,
+						end: this.end
 					}
-				}).then(function(response) {
+				}).then(response => {
 					let resp = response.data
 
 					if(resp.success) {
-						_this.articleList = _this.articleList.concat(resp.data)
-						console.log(_this.articleList)
+						this.articleList = this.articleList.concat(resp.data)
+						console.log(this.articleList)
 					}
-				}).catch(function(error) {
+				}).catch(error => {
 					console.log(error)
 				})
 			},
