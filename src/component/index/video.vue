@@ -5,7 +5,7 @@
 				<i></i>
 				益儿剧场
 			</span>
-			<button>更多</button>
+			<button @click="noMore">更多</button>
 		</div>
 		<div class="body" @click="goVideoList">
 			<div>
@@ -32,6 +32,9 @@
 		methods: {
 			goVideoList() {
 				this.$router.push(this.video.path)
+			},
+			noMore() {
+				this.$Toast('没有更多啦')
 			}
 		}
 	}

@@ -1,7 +1,7 @@
 <template>
 	<transition name="fade" appear>
 		<div v-if="show" class="dialog-wrap">
-			<div class="dialog-inner" key="inner">
+			<div class="dialog-inner">
 				<h3>{{title}}</h3>
 				<div class="dialog-content">{{content}}</div>
 				<div class="btns">
