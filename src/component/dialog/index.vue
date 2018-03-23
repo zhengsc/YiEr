@@ -49,17 +49,22 @@
 		background: rgba(0, 0, 0, 0.4);
 		z-index: 99;
 		@include flex;
-		&.fade-enter-active,
+		&.fade-enter-active {
+			.dialog-inner {
+				transition: all .2s ease-out;
+			}
+		}
 		&.fade-leave-active {
 			.dialog-inner {
-				transition: all .2s;
+				transition: all .2s ease-in;
 			}
 		}
 		&.fade-enter,
 		&.fade-leave-to {
 			.dialog-inner {
 				opacity: 0;
-				transform: scale(.7);
+				// transform: scale(.7);
+				transform: translateY(10%);
 			}
 			
 		}
@@ -67,7 +72,8 @@
 		&.fade-active-to {
 			.dialog-inner {
 				opacity: 1;
-				transform: scale(1);
+				// transform: scale(1);
+				transform: translateY(0);
 			}
 		}
 		.dialog-inner {

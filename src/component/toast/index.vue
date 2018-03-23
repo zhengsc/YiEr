@@ -32,11 +32,11 @@
 	}
 	
 	.Toast.slide-toast-enter-active {
-		transition: all .3s;
+		transition: all .3s ease-out;
 	}
 
 	.Toast.slide-toast-leave-active {
-		transition: all .3s;
+		transition: all .3s ease-in;
 	}
 
 	.Toast.slide-toast-enter,
