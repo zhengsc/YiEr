@@ -29,8 +29,9 @@ let showNextToast = () => {
 		toastList.shift()
 		showNextToast()
 	}
-
+	
 	document.body.appendChild(instance.$mount().$el)
+	
 }
 
 let Toast = (option) => {

@@ -1,6 +1,6 @@
 <template>
 	<transition name="slide-toast" appear>
-		<div class="Toast" v-if="show">
+		<div id="Toast" class="Toast" v-if="show">
 			<p>{{content}}</p>
 		</div>
 	</transition>
