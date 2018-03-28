@@ -42,7 +42,7 @@
 
 <style lang="scss" scoped>
 	.video {
-
+		margin-top: .2rem;
 		.title {
 			height: .83rem;
 			padding: 0 .2rem;
@@ -50,6 +50,7 @@
 			justify-content: space-between;
 			align-items: center;
 			border-bottom: 4px solid #ff950c;
+			background-color: #fff;
 			span {
 				display: flex;
 				align-items: center;

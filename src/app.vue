@@ -71,7 +71,7 @@
 		left: 0;
 		bottom: 0;
 		right: 0;
-		padding-bottom: 1rem;
+		// padding-bottom: 1rem;
 		overflow: hidden;
 	}
 </style>

@@ -129,6 +129,7 @@
 		bottom: 1rem;
 		overflow: auto;
 		-webkit-overflow-scrolling: touch;
+		background-color: #efefef;
 	}
 </style>
 

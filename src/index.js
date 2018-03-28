@@ -4,6 +4,7 @@ import router from './router.js'
 import store from './store.js'
 import axios from 'axios'
 import Qs from 'qs'
+import FastClick from 'fastclick'
 import Tool from './tool.js'
 
 import './index.css'
@@ -25,3 +26,5 @@ let app = new Vue({
 })
 
 app.$mount(div)
+
+FastClick.attach(document.body)

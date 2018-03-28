@@ -15,7 +15,12 @@
 		computed: {
 			username() {
 				let userInfo = this.$store.state.userInfo
-				return userInfo.mobile ? userInfo.mobile : '请登录'
+
+				try {
+					return userInfo.mobile ? userInfo.mobile : '请登录'
+				} catch(e) {
+					return '请登录'
+				}
 			}
 		}
 	}

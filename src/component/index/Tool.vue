@@ -86,7 +86,7 @@
 		width: 100%;
 		height: auto;
 		background: #fff;
-		margin-top: .3rem;
+		padding-top: .3rem;
 		border-bottom: 1px solid #e1e1e1;
 		div {
 			width: 7.1rem;

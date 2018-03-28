@@ -55,6 +55,10 @@
 				}
 
 				this.isShowLoading = false
+			}).catch(error => {
+				console.log(error)
+			}).finally(() => {
+				this.isShowLoading = false
 			})
 		},
 		methods: {

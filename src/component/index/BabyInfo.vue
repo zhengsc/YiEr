@@ -68,7 +68,7 @@
 	.baby-content {
 		position: relative;
 		height: 4rem;
-		background: url('/src/images/index/baby-bg.png') no-repeat top center;
+		background: #fff url('/src/images/index/baby-bg.png') no-repeat top center;
 		background-size: 7.5rem 3rem;
 		.baby {
 			position: absolute;

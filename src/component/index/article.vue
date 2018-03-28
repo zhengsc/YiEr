@@ -74,6 +74,8 @@
 <style lang="scss" scoped>
 	.article-wrap {
 		height: auto;
+		margin-top: .2rem;
+		background-color: #fff;
 		.article-title {
 			height: .83rem;
 			display: flex;

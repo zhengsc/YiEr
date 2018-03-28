@@ -1,87 +1,89 @@
 <template>
 	<div class="detail">
-		<div class="product-title">
-			<img :src="'/uploads/img/' + detail.icon + '_s.png'" alt="">
-			<div class="product-info">
-				<p>{{detail.name}}</p>
-				<p class="info-desc">{{detail.description}}</p>
-				<p class="info-tag">
-					<span v-for="tag in getTags" :key="tag">{{tag}}</span>
-				</p>
+		<div class="context">
+			<div class="product-title">
+				<img :src="'/uploads/img/' + detail.icon + '_s.png'" alt="">
+				<div class="product-info">
+					<p>{{detail.name}}</p>
+					<p class="info-desc">{{detail.description}}</p>
+					<p class="info-tag">
+						<span v-for="tag in getTags" :key="tag">{{tag}}</span>
+					</p>
+				</div>
 			</div>
-		</div>
-		<div class="product-server">
-			<div class="title" @click="showServer = !showServer">
-				<span>
-					<i></i>
-					服务介绍
-				</span>
-				<i :class="['icon', showServer ? 'show' : '']"></i>
+			<div class="product-server">
+				<div class="title" @click="showServer = !showServer">
+					<span>
+						<i></i>
+						服务介绍
+					</span>
+					<i :class="['icon', showServer ? 'show' : '']"></i>
+				</div>
+				<!-- <transition name="slide-down"> -->
+					<ul class="content" v-show="showServer">
+						<li>
+							<i></i>
+							<p>
+								<span>重疾绿色通道</span>
+								<span>10类疾病的门诊、住院、手术快速预约通道</span>
+							</p>
+						</li>
+						<li>
+							<i></i>
+							<p>
+								<span>电话医生</span>
+								<span>专业医生7x12小时在线为您服务</span>
+							</p>
+						</li>
+						<li>
+							<i></i>
+							<p>
+								<span>健康资讯</span>
+								<span>根据儿童不同的成长阶段，提供专业定制化的资讯</span>
+							</p>
+						</li>
+						<li>
+							<i></i>
+							<p>
+								<span>疫苗提醒</span>
+								<span>儿童疫苗接种的智能提醒、相关知识及注意事项</span>
+							</p>
+						</li>
+					</ul>
+				<!-- </transition> -->
 			</div>
-			<!-- <transition name="slide-down"> -->
-				<ul class="content" v-show="showServer">
-					<li>
+			<div class="product-order">
+				<div class="title" @click="showOrder = !showOrder">
+					<span>
 						<i></i>
-						<p>
-							<span>重疾绿色通道</span>
-							<span>10类疾病的门诊、住院、手术快速预约通道</span>
-						</p>
-					</li>
-					<li>
-						<i></i>
-						<p>
-							<span>电话医生</span>
-							<span>专业医生7x12小时在线为您服务</span>
-						</p>
-					</li>
-					<li>
-						<i></i>
-						<p>
-							<span>健康资讯</span>
-							<span>根据儿童不同的成长阶段，提供专业定制化的资讯</span>
-						</p>
-					</li>
-					<li>
-						<i></i>
-						<p>
-							<span>疫苗提醒</span>
-							<span>儿童疫苗接种的智能提醒、相关知识及注意事项</span>
-						</p>
-					</li>
-				</ul>
-			<!-- </transition> -->
-		</div>
-		<div class="product-order">
-			<div class="title" @click="showOrder = !showOrder">
-				<span>
-					<i></i>
-					订购须知
-				</span>
-				<i :class="['icon', showOrder ? 'show' : '']"></i>
+						订购须知
+					</span>
+					<i :class="['icon', showOrder ? 'show' : '']"></i>
+				</div>
+				<!-- <transition name="slide-down" mode="out-in"> -->
+					<ul class="content" v-if="showOrder">
+						<li>
+							1.适用于出生28天-14周岁儿童；
+						</li>
+						<li>
+							2.本产品不包含医院内诊疗费用；
+						</li>
+						<li>
+							3.重疾就医快速预约服务在订购60天后可开始申请；
+						</li>
+						<li>
+							4.服务热线<a href="tel:4008175566">4008175566</a>
+						</li>
+					</ul>
+				<!-- </transition> -->
 			</div>
-			<!-- <transition name="slide-down" mode="out-in"> -->
-				<ul class="content" v-if="showOrder">
-					<li>
-						1.适用于出生28天-14周岁儿童；
-					</li>
-					<li>
-						2.本产品不包含医院内诊疗费用；
-					</li>
-					<li>
-						3.重疾就医快速预约服务在订购60天后可开始申请；
-					</li>
-					<li>
-						4.服务热线<a href="tel:4008175566">4008175566</a>
-					</li>
-				</ul>
-			<!-- </transition> -->
 		</div>
 		<div class="btns">
-			<a href="">
+			<a href="javascript:;">
 				<img src="/src/images/product/btns-chat-icon.png" alt="">
 				我要咨询
 			</a>
-			<a href="">
+			<a href="javascript:;">
 				{{(detail.price / 100).toFixed(2)}}
 				元 / 
 				{{productUnit}}
@@ -143,17 +145,24 @@
 </script>
 
 <style lang="scss" scoped>
+	body {
+		background-color: #efefef;
+	}
 	.detail {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		overflow: auto;
-		-webkit-overflow-scrolling: touch;
+		width: 100%;
+		height: 100%;
 		background: #efefef;
-		> div {
-			background-color: #fff;
+		.context {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 1rem;
+			overflow: auto;
+			-webkit-overflow-scrolling: touch;
+			> div {
+				background-color: #fff;
+			}
 		}
 		.product-title {
 			padding: .4rem .2rem .2rem;
@@ -332,6 +341,7 @@
 				&:first-child {
 					width: 2.9rem;
 					color: #1e1e1e;
+					background: #fff;
 				}
 				&:last-child {
 					width: 4.6rem;
