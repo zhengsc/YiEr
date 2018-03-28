@@ -90,6 +90,7 @@
 			justify-content: flex-start;
 			align-items: center;
 			border-bottom: 1px solid #e1e1e1;
+			background-color: #fff;
 			a {
 				height: 80%;
 				display: flex;

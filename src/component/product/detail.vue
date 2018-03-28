@@ -145,9 +145,6 @@
 </script>
 
 <style lang="scss" scoped>
-	body {
-		background-color: #efefef;
-	}
 	.detail {
 		width: 100%;
 		height: 100%;

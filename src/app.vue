@@ -73,5 +73,6 @@
 		right: 0;
 		// padding-bottom: 1rem;
 		overflow: hidden;
+		background-color: #efefef;
 	}
 </style>
