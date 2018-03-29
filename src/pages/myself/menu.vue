@@ -1,6 +1,6 @@
 <template>
 	<div class="menu">
-		<a href="javascript:;">
+		<a href="javascript:;" @click="goOrder">
 			<img src="/src/images/myself/server-icon.png" alt="">
 			<p>我的服务</p>
 		</a>
@@ -33,6 +33,9 @@
 		methods: {
 			go2BabyList() {
 				this.$router.push('/babyList')
+			},
+			goOrder() {
+				this.$router.push('/order')
 			}
 		}
 	}

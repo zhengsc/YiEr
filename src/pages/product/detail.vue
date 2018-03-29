@@ -128,6 +128,9 @@
 				}
 			}
 		},
+		methods: {
+			
+		},
 		activated() {
 			this.$http.post(Api.productDetail, this.Qs.stringify({
 				productId: this.$route.params.id

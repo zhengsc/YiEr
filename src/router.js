@@ -12,6 +12,7 @@ const Myself = () => import('./pages/myself/myself.vue')
 const ProductDetail = () => import('./pages/product/detail.vue')
 const babyList = () => import('./pages/myself/babyList.vue')
 const Read = () => import('./pages/read/read.vue')
+const Order = () => import('./pages/order/order.vue')
 
 Vue.use(VueRouter)
 
@@ -76,6 +77,15 @@ let routes = [
 		path: '/read',
 		name: 'Read',
 		component: Read,
+		meta: {
+			level: 2,
+			animation: 4
+		}
+	},
+	{
+		path: '/order',
+		name: 'Order',
+		component: Order,
 		meta: {
 			level: 2,
 			animation: 4
