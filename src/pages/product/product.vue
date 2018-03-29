@@ -26,7 +26,7 @@
 <script>
 	import Api from '../../assest/Api.js'
 	import Products from './products.vue'
-	import Loading from '../loading/loading.vue'
+	import Loading from '../../component/loading/loading.vue'
 
 	export default {
 		data() {

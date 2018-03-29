@@ -22,7 +22,7 @@
 
 <script>
 	import Api from '../../assest/Api.js'
-	import Nomsg from '../nomsg.vue'
+	import Nomsg from '../../component/nomsg.vue'
 
 	export default {
 		data() {

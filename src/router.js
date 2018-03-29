@@ -5,13 +5,13 @@ import VueRouter from 'vue-router'
 // import Grarantee from './component/grarantee/grarantee.vue'
 // import Myself from './component/myself/myself.vue'
 
-const Index = () => import('./component/index/index.vue')
-const Server = () => import('./component/server/server.vue')
-const Product = () => import('./component/product/product.vue')
-const Myself = () => import('./component/myself/myself.vue')
-const ProductDetail = () => import('./component/product/detail.vue')
-const babyList = () => import('./component/myself/babyList.vue')
-const Read = () => import('./component/read/read.vue')
+const Index = () => import('./pages/index/index.vue')
+const Server = () => import('./pages/server/server.vue')
+const Product = () => import('./pages/product/product.vue')
+const Myself = () => import('./pages/myself/myself.vue')
+const ProductDetail = () => import('./pages/product/detail.vue')
+const babyList = () => import('./pages/myself/babyList.vue')
+const Read = () => import('./pages/read/read.vue')
 
 Vue.use(VueRouter)
 

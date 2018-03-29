@@ -98,6 +98,7 @@
 			top: 0;
 			height: .9rem;
 			overflow: auto;
+			background-color: #fff;
 			ul {
 				white-space: nowrap;
 				height: 100%;

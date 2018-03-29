@@ -30,7 +30,7 @@
 </template>
 
 <script>
-	import Nomsg from '../nomsg.vue'
+	import Nomsg from '../../component/nomsg.vue'
 
 	export default {
 		props: {
