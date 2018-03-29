@@ -1,6 +1,6 @@
 <template>
 	<div class="order">
-		<Process :steps="steps" />
+		<Process :steps="steps" :currentStep="currentStep" />
 		<Agreement :isCheck="isAgreeEntrance" @changeStatus="changeEntranceStatus"/>
 		<div class="btn">
 			<button @click="nextStep">下一步</button>
@@ -29,7 +29,8 @@
 						name: '付款'
 					}
 				],
-				isAgreeEntrance: false
+				isAgreeEntrance: false,
+				currentStep: 1
 			}
 		},
 		components: {
@@ -45,6 +46,8 @@
 					console.log('请勾选协议')
 					document.querySelector('.agreement').scrollTop = 100000
 					return 
+				} else {
+					this.currentStep++
 				}
 			}
 		}

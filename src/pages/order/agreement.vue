@@ -301,10 +301,15 @@
 		.paragraph-title-firstClass {
 			font-weight: bold;
 			line-height: 3;
-			font-size: 32px;
+			font-size: 24px;
 		}
-		.paragraph p {
+		.paragraph-title-thirdClass {
+			font-size: 20px;
+			// font-weight: bold;
+		}
+		p {
 			word-break: break-all;
+			font-size: 20px;
 		}
 		.checkbox {
 			height: .88rem;

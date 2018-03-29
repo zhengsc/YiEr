@@ -72,6 +72,7 @@
 				z-index: 1;
 				transform: translateY(-50%);
 				background: #ccc;
+				transition: all 2s;
 			}
 			&:before {
 				left: 0;
@@ -81,7 +82,8 @@
 			}
 			&.over {
 				i {
-					background-image: url('/src/images/order/steps-over-icon.png');
+					// background-image: url('/src/images/order/steps-over-icon.png');
+					filter: none;
 				}
 				span {
 					color: #f7aa2b;
@@ -97,12 +99,14 @@
 				height: .4rem;
 				width: .4rem;
 				font-style: normal;
-				background-image: url('/src/images/order/steps-icon.png');
+				background-image: url('/src/images/order/steps-over-icon.png');
 				background-repeat: no-repeat;
 				background-position: center;
 				background-size: cover;
 				text-align: center;
 				color: #fff;
+				filter: grayscale(1);
+				transition: all 1s;
 				@include flex;
 			}
 			span {
