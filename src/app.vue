@@ -9,10 +9,6 @@
 			<transition :name="footerSlide">
 				<Footer v-show="showFooter"></Footer>
 			</transition>
-			
-			<!-- <transition :name="loginSlide"> -->
-				<Login v-if="isLogin" :show="isLogin" />
-			<!-- </transition> -->
 		</div>
 		
 	<!-- </div> -->
@@ -20,7 +16,6 @@
 
 <script>
 	import Footer from './component/footer.vue'
-	import Login from './component/login/login.vue'
 
 	export default {
 		data() {
@@ -38,16 +33,9 @@
 		},
 		components: {
 			Footer,
-			Login
 		},
 		watch: {
 			'$route'(to, from) {
-				if(to.meta.login) {
-					if(!this.$store.state.isLogin) {
-						// this.$store.commit('loginIn')
-						// return 
-					}
-				}
 				if(typeof from.meta.animation !== 'undefined') {
 					if(to.meta.animation < from.meta.animation) {
 						this.slide = 'slide-right'
@@ -71,7 +59,6 @@
 		left: 0;
 		bottom: 0;
 		right: 0;
-		// padding-bottom: 1rem;
 		overflow: hidden;
 		background-color: #efefef;
 	}

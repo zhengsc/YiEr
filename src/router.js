@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Store from './store.js'
 // import Index from './component/index/index.vue'
 // import Server from './component/server/server.vue'
 // import Grarantee from './component/grarantee/grarantee.vue'
@@ -9,6 +10,7 @@ const Index = () => import('./pages/index/index.vue')
 const Server = () => import('./pages/server/server.vue')
 const Product = () => import('./pages/product/product.vue')
 const Myself = () => import('./pages/myself/myself.vue')
+const Login = () => import('./component/login/login.vue')
 const ProductDetail = () => import('./pages/product/detail.vue')
 const babyList = () => import('./pages/myself/babyList.vue')
 const Read = () => import('./pages/read/read.vue')
@@ -55,6 +57,15 @@ let routes = [
 		meta: {
 			animation: 3,
 			level: 1
+		}
+	},
+	{
+		path: '/login',
+		name: 'Login',
+		component: Login,
+		meta: {
+			animation: 99,
+			level: 2
 		}
 	},
 	{
@@ -118,6 +129,21 @@ let router = new VueRouter({
 	routes
 })
 
-
+router.beforeEach((to, from, next) => {
+	if(to.meta.login) {
+		if(Store.state.isLogin) {
+			next()
+		} else {
+			next({
+				path: '/login',
+				query: {
+					href: encodeURIComponent(to.fullPath)
+				}
+			})
+		}
+	} else {
+		next()
+	}
+})
 
 export default router

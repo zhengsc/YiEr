@@ -62,7 +62,7 @@
 				// this.$router.push('/tool')
 				// this.$store.commit('changeLoginStatus')
 
-				this.$store.commit('loginIn')
+				// this.$store.commit('loginIn')
 			},
 			go2Read() {
 				this.$router.push('/read')

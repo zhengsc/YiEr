@@ -1,5 +1,5 @@
 <template>
-	<div id="login" :class="['login', show ? 'show' : '']">
+	<div id="login" class="login">
 		<img src="/src/images/icon/login-logo.png" alt="">
 		<div class="username">
 			<p>
@@ -24,7 +24,7 @@
 		props: {
 			show: {
 				type: Boolean,
-				required: true
+				default: true
 			}
 		},
 		data() {
@@ -84,10 +84,24 @@
 
 					if(resp.success) {
 						this.$store.commit('loginIn')
+						this.$store.commit('setUserInfo', resp.data)
+						
+						this.next()
 					}
+
 				}).catch(error => {
 					console.log(error)
 				})
+			},
+			next() {
+				let params = this.$route.query
+				console.log(this.$route)
+
+				if(params.href) {
+					this.$router.replace(decodeURIComponent(params.href))
+				} else {
+					this.$router.back()
+				}
 			},
 			close() {
 				this.$store.commit('loginOut')
@@ -104,17 +118,19 @@
 		}
 	}
 	#body div#login {
-		position: fixed;
+		position: absolute;
 		top: 0;
 		bottom: 0;
 		right: 0;
 		left: 0;
 		background: #fff;
-		transform: translateY(20%);
-		opacity: 0;
+		// transform: translateY(20%);
+		// opacity: 0;
 		&.show {
-			animation: show .2s ease;
-			animation-fill-mode: forwards;
+			// animation: show .2s ease;
+			// animation-fill-mode: forwards;
+			// transform: translateY(0);
+			// opacity: 1;
 		}
 		img {
 			display: block;
