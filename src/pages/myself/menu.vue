@@ -35,6 +35,7 @@
 				this.$router.push('/babyList')
 			},
 			goOrder() {
+				this.$store.commit('setProductPrice', 1000)
 				this.$router.push('/order')
 			}
 		}

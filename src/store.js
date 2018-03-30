@@ -6,7 +6,8 @@ Vue.use(Vuex)
 let store = new Vuex.Store({
 	state: {
 		isLogin: false,
-		userInfo: {}
+		userInfo: {},
+		productPrice: 0
 	},
 	mutations: {
 		loginIn(state) {
@@ -17,6 +18,9 @@ let store = new Vuex.Store({
 		},
 		setUserInfo(state, user) {
 			state.userInfo = user
+		},
+		setProductPrice(state, price) {
+			state.productPrice = price
 		}
 	}
 })

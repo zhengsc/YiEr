@@ -1,16 +1,28 @@
 <template>
 	<div class="order">
 		<Process :steps="steps" :currentStep="currentStep" />
-		<Agreement :isCheck="isAgreeEntrance" @changeStatus="changeEntranceStatus"/>
-		<div class="btn">
-			<button @click="nextStep">下一步</button>
-		</div>
+		
+		<transition-group name="slide-left" tag="div">
+			<Agreement 
+				v-show="currentStep == 1" 
+				:key="'agreement'" 
+				:isCheck="isAgreeEntrance" 
+				@changeStatus="changeEntranceStatus" 
+				@nextStep="nextStep" 
+			/>
+			<Info 
+				v-show="currentStep == 2" 
+				:key="'info'"
+				@nextStep="nextStep"
+			/>
+		</transition-group>
 	</div>
 </template>
 
 <script>
 	import Process from './process.vue'
 	import Agreement from './agreement.vue'
+	import Info from './info.vue'
 
 	export default {
 		data() {
@@ -35,20 +47,15 @@
 		},
 		components: {
 			Process,
-			Agreement
+			Agreement,
+			Info
 		},
 		methods: {
 			changeEntranceStatus(status) {
 				this.isAgreeEntrance = status
 			},
-			nextStep(event) {
-				if(!this.isAgreeEntrance) {
-					console.log('请勾选协议')
-					document.querySelector('.agreement').scrollTop = 100000
-					return 
-				} else {
-					this.currentStep++
-				}
+			nextStep() {
+				this.currentStep++
 			}
 		}
 	}
@@ -68,20 +75,13 @@
 		bottom: 0;
 		right: 0;
 	}
-	.btn {
+	.info-context,
+	.agreement-context {
 		position: absolute;
+		top: 1.74rem;
 		left: 0;
-		right: 0;
 		bottom: 0;
-		width: 100%;
-		height: 1rem;
-		button {
-			width: 100%;
-			height: 100%;
-			background-color: #f7aa2b;
-			color: #fff;
-			@include flex;
-			font-size: 24px;
-		}
+		right: 0;
 	}
+	
 </style>
