@@ -8,7 +8,7 @@
 			<img src="/src/images/myself/baby-list-icon.png" alt="">
 			<p>我的宝宝</p>
 		</a>
-		<a href="javascript:;">
+		<a href="javascript:;" @click="goOrderInfo">
 			<img src="/src/images/myself/online-icon.png" alt="">
 			<p>我的咨询</p>
 		</a>
@@ -37,6 +37,9 @@
 			goOrder() {
 				this.$store.commit('setProductPrice', 1000)
 				this.$router.push('/order')
+			},
+			goOrderInfo() {
+				this.$router.push('/order/info')
 			}
 		}
 	}

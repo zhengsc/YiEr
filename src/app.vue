@@ -1,11 +1,11 @@
 <template>
 	<!-- <div> -->
 		<div id="body">
-				<transition :name="slide">
-					<keep-alive>
-						<router-view></router-view>
-					</keep-alive>
-				</transition>
+			<transition :name="slide">
+				<keep-alive>
+					<router-view></router-view>
+				</keep-alive>
+			</transition>
 			<transition :name="footerSlide">
 				<Footer v-show="showFooter"></Footer>
 			</transition>

@@ -32,7 +32,7 @@
 		methods: {
 			submit() {
 				if(this.babyName && this.babyCard) {
-					this.$emit('nextStep')
+					this.$router.push('/order/pay')
 				}
 			}
 		},

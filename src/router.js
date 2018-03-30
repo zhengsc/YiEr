@@ -13,6 +13,9 @@ const ProductDetail = () => import('./pages/product/detail.vue')
 const babyList = () => import('./pages/myself/babyList.vue')
 const Read = () => import('./pages/read/read.vue')
 const Order = () => import('./pages/order/order.vue')
+const Agreement = () => import('./pages/order/agreement.vue')
+const OrderInfo = () => import('./pages/order/info.vue')
+const Pay = () => import('./pages/order/pay.vue')
 
 Vue.use(VueRouter)
 
@@ -88,8 +91,22 @@ let routes = [
 		component: Order,
 		meta: {
 			level: 2,
-			animation: 4
-		}
+			animation: 5
+		},
+		children: [
+			{
+				path: '',
+				component: Agreement
+			},
+			{
+				path: 'info',
+				component: OrderInfo
+			},
+			{
+				path: 'pay',
+				component: Pay
+			}
+		]
 	}
 ]
 

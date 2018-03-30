@@ -265,7 +265,7 @@
 					document.querySelector('.scroll-wrap').scrollTop = 100000
 					return 
 				} else {
-                    this.$emit('nextStep')
+                    this.$router.push('/order/info')
                 }
             }
 		}

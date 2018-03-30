@@ -2,20 +2,11 @@
 	<div class="order">
 		<Process :steps="steps" :currentStep="currentStep" />
 		
-		<transition-group name="slide-left" tag="div">
-			<Agreement 
-				v-show="currentStep == 1" 
-				:key="'agreement'" 
-				:isCheck="isAgreeEntrance" 
-				@changeStatus="changeEntranceStatus" 
-				@nextStep="nextStep" 
-			/>
-			<Info 
-				v-show="currentStep == 2" 
-				:key="'info'"
-				@nextStep="nextStep"
-			/>
-		</transition-group>
+		<transition name="slide-left">
+			<keep-alive>
+				<router-view></router-view>
+			</keep-alive>
+		</transition>
 	</div>
 </template>
 
@@ -30,11 +21,13 @@
 				steps: [
 					{
 						index: 1,
-						name: '阅读协议'
+						name: '阅读协议',
+						path: ''
 					},
 					{
 						index: 2,
-						name: '填写信息'
+						name: '填写信息',
+						path: 'info'
 					},
 					{
 						index: 3,
@@ -47,15 +40,15 @@
 		},
 		components: {
 			Process,
-			Agreement,
-			Info
+			// Agreement,
+			// Info
 		},
 		methods: {
 			changeEntranceStatus(status) {
 				this.isAgreeEntrance = status
 			},
 			nextStep() {
-				this.currentStep++
+				this.$router.push(this.steps[++this.currentStep].path)
 			}
 		}
 	}

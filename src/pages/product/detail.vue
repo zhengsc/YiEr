@@ -83,7 +83,7 @@
 				<img src="/src/images/product/btns-chat-icon.png" alt="">
 				我要咨询
 			</a>
-			<a href="javascript:;">
+			<a href="javascript:;" @click="order">
 				{{(detail.price / 100).toFixed(2)}}
 				元 / 
 				{{productUnit}}
@@ -129,7 +129,10 @@
 			}
 		},
 		methods: {
-			
+			order() {
+				this.$store.commit('setProductPrice', this.detail.price)
+				this.$router.push('/order')
+			}
 		},
 		activated() {
 			this.$http.post(Api.productDetail, this.Qs.stringify({
