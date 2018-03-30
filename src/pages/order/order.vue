@@ -3,17 +3,15 @@
 		<Process :steps="steps" :currentStep="currentStep" />
 		
 		<transition name="slide-left">
-			<keep-alive>
+			<!-- <keep-alive> -->
 				<router-view></router-view>
-			</keep-alive>
+			<!-- </keep-alive> -->
 		</transition>
 	</div>
 </template>
 
 <script>
 	import Process from './process.vue'
-	import Agreement from './agreement.vue'
-	import Info from './info.vue'
 
 	export default {
 		data() {
@@ -34,21 +32,32 @@
 						name: '付款'
 					}
 				],
-				isAgreeEntrance: false,
-				currentStep: 1
+				isAgreeEntrance: false
+			}
+		},
+		computed: {
+			currentStep() {
+				switch(this.$route.name) {
+					case 'OrderInfo':
+						return 2; break;
+					case 'OrderEntrance':
+						return 1; break;
+					case 'OrderPay':
+						return 3; break;
+					default: 
+						return 1;
+				}
 			}
 		},
 		components: {
 			Process,
-			// Agreement,
-			// Info
 		},
 		methods: {
 			changeEntranceStatus(status) {
 				this.isAgreeEntrance = status
 			},
 			nextStep() {
-				this.$router.push(this.steps[++this.currentStep].path)
+				this.currentStep++
 			}
 		}
 	}

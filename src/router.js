@@ -96,14 +96,17 @@ let routes = [
 		children: [
 			{
 				path: '',
+				name: 'OrderEntrance',
 				component: Agreement
 			},
 			{
 				path: 'info',
+				name: 'OrderInfo',
 				component: OrderInfo
 			},
 			{
 				path: 'pay',
+				name: 'OrderPay',
 				component: Pay
 			}
 		]

@@ -72,7 +72,7 @@
 				z-index: 1;
 				transform: translateY(-50%);
 				background: #ccc;
-				transition: all 2s;
+				transition: all .2s;
 			}
 			&:before {
 				left: 0;

@@ -237,7 +237,7 @@
             </div>
         </div>
         <div class="btn">
-            <button @click="nextStep">下一步</button>
+            <a href="javascript:;" @click="nextStep">下一步</a>
         </div>
 	</div>
 </template>
@@ -356,7 +356,7 @@
         bottom: 0;
         width: 100%;
         height: 1rem;
-        button {
+        a {
             width: 100%;
             height: 100%;
             background-color: #f7aa2b;

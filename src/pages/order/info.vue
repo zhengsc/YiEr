@@ -15,8 +15,8 @@
 			</div>
 		</div>
 		<div class="btns">
-			<button class="price">￥ {{getProductPrice}}元</button>
-			<button class="submit" @click="submit">提交</button>
+			<a href="javascript:;" class="price">￥ {{getProductPrice}}元</a>
+			<a href="javascript:;" class="submit" @click="submit">提交</a>
 		</div>
 	</div>
 </template>
@@ -100,7 +100,7 @@
 		right: 0;
 		height: 1rem;
 		@include flex;
-		button {
+		a {
 			@include flex;
 			height: 100%;
 			font-size: 24px;
