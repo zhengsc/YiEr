@@ -87,10 +87,16 @@
 						this.$store.commit('setUserInfo', resp.data)
 						
 						this.next()
+					} else {
+						this.$toast(resp.msg || '请求失败')
 					}
 
 				}).catch(error => {
-					console.log(error)
+					let resp = error.response
+
+					if(resp.data) {
+						this.$Toast(resp.data.msg || '请求失败')
+					}
 				})
 			},
 			next() {
