@@ -53,8 +53,6 @@
 					this.list = resp.data
 					this.filterList = resp.data
 				}
-
-				this.isShowLoading = false
 			}).catch(error => {
 				console.log(error)
 			}).finally(() => {
