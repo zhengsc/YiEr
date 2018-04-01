@@ -1,6 +1,6 @@
 <template>
 	<transition name="fade" appear>
-		<div v-if="show" class="dialog-wrap">
+		<div v-show="show" class="dialog-wrap" @click="mask">
 			<div class="dialog-inner">
 				<h3>{{title}}</h3>
 				<div class="dialog-content">{{content}}</div>
@@ -20,13 +20,22 @@
 				show: true,
 				content: '',
 				title: '提示',
+				closeWithMask: true,
 				confirmBtnText: '确认',
 				cancelBtnText: ''
 			}
 		},
 		methods: {
 			success() {},
-			cancel() {}
+			cancel() {},
+			close() {
+				this.show = false
+			},
+			mask() {
+				if(this.closeWithMask) {
+					this.close()
+				}
+			}
 		}
 	}
 

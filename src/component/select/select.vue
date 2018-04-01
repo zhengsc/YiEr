@@ -1,6 +1,6 @@
 <template>
 	<transition name="fade" appear>
-		<div class="select-wrap" v-if="show">
+		<div class="select-wrap" v-show="show" @click="mask">
 			<div class="select-body">
 				<div class="title">
 					<h3>{{options.title}}</h3>
@@ -27,7 +27,11 @@
 		data() {
 			return {
 				show: true,
-				options: {}
+				options: {
+					closeWithMask: true,
+					list: [],
+					title: ''
+				}
 			}
 		},
 		methods: {
@@ -36,6 +40,11 @@
 			},
 			close() {
 
+			},
+			mask() {
+				if(this.options.closeWithMask) {
+					this.close()
+				}
 			}
 		}
 	}

@@ -1,27 +1,42 @@
 import Vue from 'vue'
 import Select from './select.vue'
 
+let extend = function(obj, opt) {
+	for(let i in opt) {
+		if(obj.hasOwnProperty(i)) {
+			obj[i] = opt[i]
+		}
+	}
+}
+
 let SelectConstructor = Vue.extend(Select)
 
-let selectWrap = null
+let instance = null
 
 let SelectFn = function(opt) {
 	if(typeof opt !== 'object') {
 		throw new Error('opt type must be object')
-	} 
+	}
 
-	let instance = new SelectConstructor().$mount()
+	if(!instance) {
+		instance = new SelectConstructor({
+			el: document.createElement('div')
+		})
+	}
 
-	instance.$data.options = opt
+	extend(instance.$data.options, opt)
+
+	instance.$data.show = true
+	
 
 	return new Promise((resolve, reject) => {
 		instance.select = (item) => {
-			instance.show = false
+			instance.$data.show = false
 			resolve(item)
 		}
 
 		instance.close = () => {
-			instance.show = false
+			instance.$data.show = false
 			reject()
 		}
 

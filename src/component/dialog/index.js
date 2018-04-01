@@ -9,10 +9,17 @@ let extend = function(obj, opt) {
 	}
 }
 
+let instance = null
+
 let dialogConstructor = Vue.extend(Dialog)
 
 let Alert = function(option) {
-	let instance = new dialogConstructor().$mount()
+
+	if(!instance) {
+		instance = new dialogConstructor({
+			el: document.createElement('div')
+		})
+	}
 
 	if(typeof option === 'string') {
 		instance.content = option
@@ -20,13 +27,15 @@ let Alert = function(option) {
 		extend(instance.$data, option)
 	}
 
+	instance.$data.show = true
+
 	return new Promise(function(resolve, reject) {
 		instance.success = () => {
-			instance.show = false
+			instance.close()
 			resolve()
 		}
 		instance.cancel = () => {
-			instance.show = false
+			instance.close()
 			reject()
 		}
 
