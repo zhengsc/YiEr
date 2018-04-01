@@ -108,17 +108,26 @@ let routes = [
 			{
 				path: '',
 				name: 'OrderEntrance',
-				component: Agreement
+				component: Agreement,
+				meta: {
+					animation: 5
+				}
 			},
 			{
 				path: 'info',
 				name: 'OrderInfo',
-				component: OrderInfo
+				component: OrderInfo,
+				meta: {
+					animation: 6
+				}
 			},
 			{
 				path: 'pay',
 				name: 'OrderPay',
-				component: Pay
+				component: Pay,
+				meta: {
+					animation: 7
+				}
 			}
 		]
 	}

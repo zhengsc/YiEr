@@ -1,6 +1,6 @@
 <template>
 	<div class="menu">
-		<a href="javascript:;" @click="goOrder">
+		<a href="javascript:;">
 			<img src="/src/images/myself/server-icon.png" alt="">
 			<p>我的服务</p>
 		</a>
@@ -8,7 +8,7 @@
 			<img src="/src/images/myself/baby-list-icon.png" alt="">
 			<p>我的宝宝</p>
 		</a>
-		<a href="javascript:;" @click="goOrderInfo">
+		<a href="javascript:;">
 			<img src="/src/images/myself/online-icon.png" alt="">
 			<p>我的咨询</p>
 		</a>
@@ -33,13 +33,6 @@
 		methods: {
 			go2BabyList() {
 				this.$router.push('/babyList')
-			},
-			goOrder() {
-				this.$store.commit('setProductPrice', 1000)
-				this.$router.push('/order')
-			},
-			goOrderInfo() {
-				this.$router.push('/order/info')
 			}
 		}
 	}

@@ -2,7 +2,7 @@
 	<div class="order">
 		<Process :steps="steps" :currentStep="currentStep" />
 		
-		<transition name="slide-left">
+		<transition :name="slide">
 			<!-- <keep-alive> -->
 				<router-view></router-view>
 			<!-- </keep-alive> -->
@@ -16,6 +16,7 @@
 	export default {
 		data() {
 			return {
+				slide: '',
 				steps: [
 					{
 						index: 1,
@@ -58,6 +59,17 @@
 			},
 			nextStep() {
 				this.currentStep++
+			}
+		},
+		watch: {
+			'$route'(to, from) {
+				if(typeof from.meta.animation !== 'undefined') {
+					if(to.meta.animation < from.meta.animation) {
+						this.slide = 'slide-right'
+					} else {
+						this.slide = 'slide-left'
+					}
+				}
 			}
 		}
 	}
